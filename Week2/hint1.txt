@@ -1,0 +1,12 @@
+Problem A: Simple and naive for COMP1511. I believe all of you can solve it as long as you understand the spec.
+
+Problem B: Find the maximum length first, then think about how to construct the maximum sum. Some techniques we used for the first tutorial problem "Substring Removal Game" might be useful.
+
+Problem C: You can first calculate the total number of 0s and total number of 1s. Then, you should immediately realize that once you fix 
+the total number of 01s, the total number of 10s should be fixed (think why). Constructing a sequence using 0 and 1 with a fixed number of 01 subsequence 
+can be done greedily.
+
+Problem D: Think about the ILP method of solving the first tutorial question last week, you can formulate this problem to an ILP. How to solve the ILP can be 
+done greedily. A similar problem is https://codeforces.com/gym/104114/problem/N which you can solve it in your free time.
+
+Problem E: 
