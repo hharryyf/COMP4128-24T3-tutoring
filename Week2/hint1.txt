@@ -1,3 +1,5 @@
+
+
 Problem A: Simple and naive for COMP1511. I believe all of you can solve it as long as you understand the spec.
 
 Problem B: Find the maximum length first, then think about how to construct the maximum sum. Some techniques we used for the first tutorial problem "Substring Removal Game" might be useful.
@@ -9,4 +11,11 @@ can be done greedily.
 Problem D: Think about the ILP method of solving the first tutorial question last week, you can formulate this problem to an ILP. How to solve the ILP can be 
 done greedily. A similar problem is https://codeforces.com/gym/104114/problem/N which you can solve it in your free time.
 
-Problem E: 
+Problem E: Once you understand the spec of the problem, you can treat S and T and binary strings. If you cannot solve it, try to answer
+the following questions first: 1) what is the total number of distinct strings between S[1:i] and T[1:i] for any 1 <= i <= N, 
+here S[1:i] is the prefix of S from S[1] to S[i] and N is the length of S and T. 2) how to calculate the answer to the entire 
+question if you get an answer <= K for part 1), also how to calculate the answer to the entire question if you get an answer > K for part 1)?
+
+Problem F: Note that the number of inversions and the number of operations are equal. Then, how many inversions should you eliminate per operation?
+How should you perform that so that the number of inversions is indeed reduced by that amount?
+
