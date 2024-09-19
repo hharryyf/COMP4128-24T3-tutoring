@@ -4,6 +4,8 @@ using namespace std;
 
 char s[MAX_SIZE];
 
+// https://codeforces.com/problemset/problem/1398/B
+
 /*
 5
 01111001 -> [4, 1]
@@ -20,7 +22,30 @@ int main() {
     scanf("%d", &T);
     while (T-- > 0) {
         scanf("%s", s);
-        
+        int ans = 0, i, cnt = 0, N = strlen(s);
+        vector<int> block;
+        for (i = 0 ; i < N; ++i) {
+            if (s[i] == '1') {
+                cnt++;
+            } else {
+                if (cnt > 0) {
+                    block.push_back(cnt);
+                    cnt = 0;
+                } 
+            }
+        }
+
+        if (cnt > 0) {
+            block.push_back(cnt);
+        }
+
+        sort(block.begin(), block.end(), greater<int>());
+
+        for (i = 0 ; i < (int) block.size(); i += 2) {
+            ans += block[i];
+        }
+
+        printf("%d\n", ans);
     }
     return 0;
 }
