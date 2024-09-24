@@ -1,0 +1,39 @@
+If you don't want to solve all problems, please solve CDE at least, because these techniques are "new knowledge".
+
+A. This problem is equivalent to given a set of intervals, find the maximum number of intervals such that no points
+on the line is covered by more than K intervals. You should know how to solve the problem for K=1 from COMP3121.
+For arbitary K, that sorting + greedy technique still works. The only obstacle here is that you need to ensure that your solution
+runs in the correct time complexity. Hint: try to use a multiset/map.
+
+B. You can construct the string greedily. Basically, at each position, think what is the minimum character you can get.
+This charater can be some character in the remaining part of s or the top of the stack t. An edge case is that if the minimum 
+character is already on the top of the stack t, you should pop it immediately.
+
+C. The problem is quite tricky. Think if you can solve the following validation problem: given a day limit K, can you assign 
+all the students in a way that the maximum passes do not exceed S and you can fix all the bugs within K days? This validation 
+problem can be solved using greedy (think how to sort the tasks and students) with the help of a multiset/priority queue. Once you solve this validation 
+problem, think how to solve the full problem.
+
+D. You can use this problem to be familiar with range trees. It needs you to execute
+1) point update
+2) range max query
+3) range sum query
+4) if a range is sorted in non-decreasing/non-increasing order 
+The first 3 types of queries are easy as long as you know how to use the standard template of range tree. Type-4 is the so-called 
+divide and conquer type property. What information do you need for the left children and right children so that you can decide 
+whether the parent is a non-decreasing array in O(1) time? You need to know if the left and right children are in non-decreasing order,
+and what else?
+
+
+E. As we've discussed in the tutorial, it is very difficult to delete edges from union-find. The correct way of doing it is to 
+solve the queries in a backward direction, and that would transform removing edges to adding edges. A related interview question is 
+https://leetcode.com/problems/bricks-falling-when-hit/description/?envType=problem-list-v2&envId=union-find If you find the original 
+question difficult, you can try to solve (or just read the solution) the interview problem first.
+
+F. This problem is quite difficult. It is a classic range tree + line sweep problem. Let's try to solve a simpler problem first.
+There are N 2-d points with coordinate (x[i], y[i]) (N <= 1e5), you need to answer Q queries (Q <= 1e5) of form [l,r,h].
+You need to count the total number of points with l <= x[i] <= r and y[i] <= h. The hint to this is to solve the queries offline.
+In other words, you can read in the Q queries simultaneously, and solve them in some order, and then print the answers ans[1] to ans[Q].
+You can think how to reduce the original problem to this simpler problem. Hint: "you cannot have all the K colors" is 
+equivalent to you must throw away at least 1 color.  
+
