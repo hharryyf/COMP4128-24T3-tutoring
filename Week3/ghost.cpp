@@ -35,14 +35,9 @@ int main() {
     for (int i = 1; i <= N; ++i) {
         ll x, t;
         scanf("%lld%lld", &x, &t);
-        occ[x * K - t]++;
+        
     }
 
-    int ans = 0;
-    for (auto &mp : occ) {
-        ans = max(ans, mp.second);
-    }
 
-    printf("%d\n", ans);
     return 0;
 }
