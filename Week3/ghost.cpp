@@ -30,14 +30,23 @@ using namespace std;
 int N, K;
 map<ll, int> occ;
 
+// unordered_map<ll, int> occ;
+// for programming competitions, try to use map instead of unordered_map
+// even if unordered_map is hash and has O(1) average time
+
 int main() {
     scanf("%d%d", &N, &K);
     for (int i = 1; i <= N; ++i) {
         ll x, t;
         scanf("%lld%lld", &x, &t);
-        
+        occ[x * K - t]++;
     }
 
+    int ans = 0;
+    for (auto &it : occ) {
+        ans = max(ans, it.second);
+    }
 
+    printf("%d\n", ans);
     return 0;
 }
