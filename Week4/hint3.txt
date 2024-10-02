@@ -1,0 +1,43 @@
+A. This problem has up to 1e5 columns and only 2 rows, a natural way of solving the problem is to solve the problem from left to right.
+For each column, you only have 3 choices (not choose any, choose the top one, choose the bottom one). Think how to use these observation 
+to formulate a dp state. Note that this problem similar to the second problem in the tutorial, you can think about how to solve it 
+when the number of rows is no more than 5.
+
+B. Based on the size of N and M, it is not too difficult to figure out this is a bitmask dp problem. The problem is very similar to 
+the second question in the tutorial (i.e., Pebbles). 
+
+
+C. This problem is similar to problem B. We can try to fill the colors from 1 to n. The difficulty is how to maintain the 
+total number of partitions we have created so far. The observation is suppose the current coloring has K partitions (and you have fixed the color of 
+the first i-1 elements), the element you are currently coloring has index i. If color[i] != color[i-1], then after you color the current element with 
+color[i], the total number of partitions is K+1, otherwise, the total number of partitions is still K. Since N, M, K are very small, think how you can 
+design a dp state with memory complexity O(NMK) and time complexity O(N*M^2*K). This is already enough to pass this problem.
+A challenge problem you can think about is how to solve the problem in O(NMK) time complexity.
+
+
+D. Strongly recommend you to solve this problem before contest 2. We can interpret this problem as given a set of intervals, 
+each has a "weight" i and a [l, r] range, what is the minimum total cost you'll need to cover all points between 1 and n.
+From 3121/3821, you should know when the "weight" is 1 for all intervals, you can solve this problem greedily.
+When the "weight" is not 1, you need to use dp. The hint I would give is you should sort the intervals based on the right end-point and define a 1-d 
+dp state. Then, you can think about how to solve this problem in O(N^2). Once you figure that out, the next step is to think how you can optimize 
+your algorithm to O(NlogN). Final hint: use a range min tree to represent the dp array!
+
+E. This problem is very difficult. I think this was the first problem I had no idea (and surrendered) in 2019, if you can solve it, it means your dp 
+level is higher than me. We can create a matrix of size M * M, such that g[i][j] means how many times in the string 
+character i + 'a' appears in front of character j + 'a'. With this technique, we only need to solve a minimization problem:
+what is the minimum value of sum(|pos[i + 'a'] - pos[j + 'a']| * g[i][j], i = 0..M-1, j = 0..M-1). Unfortunately, this problem is difficult with bruteforce.
+Since M is small, we can use bitmask dp, and the answer is dp[(1 << M) - 1]. The final problem remaining here is how to calculate the total cost fast 
+without the need to know the position of every character. A hint here is to observe the total cost is a sum of absolute values, when you know pos[i + 'a'] > pos[j + 'a'],
+you can eliminate the absolute value sign and change it to  (pos[i + 'a'] - pos[j + 'a']) * g[i][j]. This tells us there might be a smarter way of calculating 
+the total cost without the need of knowing exactly which character is at which position at all time, instead, we only need to know the reletive order of 
+character i and character j. Expected time complexity: O(M^2 * 2^M).
+
+
+F. This is a very difficult problem, if my memory is correct, this is the second problem I had no idea (and surrendered) in 2019. The first step is trivial,
+we sort the array in ascending order. Then observe that the imbalance of each group is only related to the minimum and maximum value of that group.
+Now, a tempting idea is to define a dp state like dp[i][j][k] = we only consider the first i people, that forms j groups and a total imbalance of k.
+This is however, difficult to do transition. Because we don't know exactly which group we place the i-th person into. One way of looking at this problem 
+is while we iterate the people from 1 to N, we form groups. Some groups are closed in the middle of the process (i.e. no more people can be added to the group).
+Define how many groups are still opened to join is a better choice. Because eventually, all groups must be closed. Now the final problem: how should 
+we maintain the total imbalance value? The hint here is, try to design a way of dynamically calculating the imbalanced value such that it is "accurate"
+only if all groups are closed.  Expected time complexity: O(N^2 * K). Make sure you are not using long long (memory limit exceeded otherwise). 
