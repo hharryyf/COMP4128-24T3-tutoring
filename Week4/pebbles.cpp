@@ -50,41 +50,6 @@ int main() {
         // we do problem solving here
         init();
         
-        for (i = 0 ; i < (1 << N); ++i) {
-            if ((i & (i << 1)) == 0) rowbit.push_back(i);
-        }
-
-        for (i = 0 ; i < N; ++i) {
-            for (j = 0; j < (1 << N); ++j) {
-                for (k = 0 ; k < N; ++k) {
-                    if (j & (1 << k)) sm[i][j] += g[i][k]; 
-                } 
-            }
-        }
-
-        for (auto &bt : rowbit) {
-            dp[0][bt] = sm[0][bt];
-        }
-
-        for (i = 1 ; i < N; ++i) {
-            for (auto &m : rowbit) {
-                for (auto &mp : rowbit) {
-                    // calculate dp[i][m] based on dp[i-1][mp]
-                    if (m & mp) continue;
-                    if ((m << 1) & mp) continue;
-                    if ((m >> 1) & mp) continue;
-                    dp[i][m] = max(dp[i][m], dp[i-1][mp] + sm[i][m]);
-                }
-            }
-        }
-
-        int ans = 0;
-
-        for (auto &bt : rowbit) {
-            ans = max(ans, dp[N-1][bt]);
-        }
-
-        printf("%d\n", ans);
     }
     return 0;
 }

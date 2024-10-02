@@ -23,17 +23,7 @@ ans = 4
 */
 
 int f(int l, int r) {
-    if (l > r) return 0;
-    if (l == r) return 1;
-    if (dp[l][r] != -1) return dp[l][r];
-    int ans = f(l+1,r) + 1;
-    for (int k = l + 1; k <= r; ++k) {
-        if (s[k] == s[l]) {
-            ans = min(ans, f(l+1, k) + f(k+1, r));
-        }
-    }
-
-    return dp[l][r] = ans;
+    
 }
 
 int main() {
