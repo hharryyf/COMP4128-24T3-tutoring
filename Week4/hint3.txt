@@ -7,7 +7,7 @@ B. Based on the size of N and M, it is not too difficult to figure out this is a
 the second question in the tutorial (i.e., Pebbles). 
 
 
-C. This problem is similar to problem B. We can try to fill the colors from 1 to n. The difficulty is how to maintain the 
+C. We can try to fill the colors from 1 to n. The difficulty is how to maintain the 
 total number of partitions we have created so far. The observation is suppose the current coloring has K partitions (and you have fixed the color of 
 the first i-1 elements), the element you are currently coloring has index i. If color[i] != color[i-1], then after you color the current element with 
 color[i], the total number of partitions is K+1, otherwise, the total number of partitions is still K. Since N, M, K are very small, think how you can 
@@ -18,8 +18,7 @@ A challenge problem you can think about is how to solve the problem in O(NMK) ti
 D. Strongly recommend you to solve this problem before contest 2. We can interpret this problem as given a set of intervals, 
 each has a "weight" i and a [l, r] range, what is the minimum total cost you'll need to cover all points between 1 and n.
 From 3121/3821, you should know when the "weight" is 1 for all intervals, you can solve this problem greedily.
-When the "weight" is not 1, you need to use dp. The hint I would give is you should sort the intervals based on the right end-point and define a 1-d 
-dp state. Then, you can think about how to solve this problem in O(N^2). Once you figure that out, the next step is to think how you can optimize 
+When the "weight" is not 1, you need to use dp. You can think about how to solve this problem in O(N^2). Once you figure that out, the next step is to think how you can optimize 
 your algorithm to O(NlogN). Final hint: use a range min tree to represent the dp array!
 
 E. This problem is very difficult. I think this was the first problem I had no idea (and surrendered) in 2019, if you can solve it, it means your dp 
