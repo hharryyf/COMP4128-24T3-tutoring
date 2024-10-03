@@ -21,8 +21,7 @@ From 3121/3821, you should know when the "weight" is 1 for all intervals, you ca
 When the "weight" is not 1, you need to use dp. You can think about how to solve this problem in O(N^2). Once you figure that out, the next step is to think how you can optimize 
 your algorithm to O(NlogN). Final hint: use a range min tree to represent the dp array!
 
-E. This problem is very difficult. I think this was the first problem I had no idea (and surrendered) in 2019, if you can solve it, it means your dp 
-level is higher than me. We can create a matrix of size M * M, such that g[i][j] means how many times in the string 
+E. This problem is very difficult. We can create a matrix of size M * M, such that g[i][j] means how many times in the string 
 character i + 'a' appears in front of character j + 'a'. With this technique, we only need to solve a minimization problem:
 what is the minimum value of sum(|pos[i + 'a'] - pos[j + 'a']| * g[i][j], i = 0..M-1, j = 0..M-1). Unfortunately, this problem is difficult with bruteforce.
 Since M is small, we can use bitmask dp, and the answer is dp[(1 << M) - 1]. The final problem remaining here is how to calculate the total cost fast 
@@ -32,7 +31,7 @@ the total cost without the need of knowing exactly which character is at which p
 character i and character j. Expected time complexity: O(M^2 * 2^M).
 
 
-F. This is a very difficult problem, if my memory is correct, this is the second problem I had no idea (and surrendered) in 2019. The first step is trivial,
+F. This is a very difficult problem. The first step is trivial,
 we sort the array in ascending order. Then observe that the imbalance of each group is only related to the minimum and maximum value of that group.
 Now, a tempting idea is to define a dp state like dp[i][j][k] = we only consider the first i people, that forms j groups and a total imbalance of k.
 This is however, difficult to do transition. Because we don't know exactly which group we place the i-th person into. One way of looking at this problem 
