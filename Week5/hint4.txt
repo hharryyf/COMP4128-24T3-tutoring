@@ -1,0 +1,24 @@
+A. This problem is NOT minimum spanning tree but a greedy problem. You can figure this out from the second example. 
+
+B. Since all paths intersect with each other, there must contain 1 vertex that belongs to all paths. You can show if you choose 
+this vertex to be the vertex with the maximum degree, it is always optimal. 
+
+C. If the graph has a bridge, no solution. Otherwise, you only have 1 bi-connected component. For this case, note that in 
+an undirected graph, it only contains tree edges and back edges when you do dfs. Back edges are the ones that create cycle,
+tree edges are the ones that "direct" the dfs. First think about how to direct that graph if it only contains 1 cycle.
+Then, think how to generalize your solution to all cases.
+
+D. Noticed that for a directed graph, the backedge in dfs are the edges that create cycles. If the graph has no backedge,
+it has no cycles. Also, backedges themselves won't form any cycle. If the original graph has no cycle, K = 1.
+Then, think about what are the other possible value(s) of K, and how to construct the answer in these cases.
+
+
+
+E. This is a classic problem. We've discussed its "solution" in the tutorial. How to find the maximum edge on the cycle can be 
+done with LCA.
+
+
+F. You can solve this problem in 2 stages. First, compress all the equal cells into a large component. Then, deal with the 
+problem that only has < or >. You can think this problem as a set of inequalities of form a < b. You can use a (posibly weighted) graph to represent 
+this inequality.  Now, each vertex, you want to know what is the longest path that arrives in this vertex. Since the graph is a DAG (you can prove it), you don't need to run bellman-ford, you can simply 
+use a dp to solve the problem.
